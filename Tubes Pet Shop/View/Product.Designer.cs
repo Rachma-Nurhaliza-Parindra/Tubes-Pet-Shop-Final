@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.GB1 = new System.Windows.Forms.GroupBox();
             this.DataProduct = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
             this.GBTombol.SuspendLayout();
             this.GB2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -122,6 +123,7 @@
             // 
             // GB2
             // 
+            this.GB2.Controls.Add(this.btnExport);
             this.GB2.Controls.Add(this.groupBox2);
             this.GB2.Controls.Add(this.tbTotal);
             this.GB2.Controls.Add(this.label8);
@@ -253,6 +255,17 @@
             this.DataProduct.TabIndex = 0;
             this.DataProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataProduct_CellClick);
             // 
+            // btnExport
+            // 
+            this.btnExport.ForeColor = System.Drawing.Color.Black;
+            this.btnExport.Location = new System.Drawing.Point(410, 155);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(103, 23);
+            this.btnExport.TabIndex = 10;
+            this.btnExport.Text = "Export to Excel";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,5 +312,6 @@
         private System.Windows.Forms.TextBox tbHargaBarang;
         private System.Windows.Forms.ComboBox cbCodeBarang;
         private System.Windows.Forms.TextBox tbNamaBarang;
+        private System.Windows.Forms.Button btnExport;
     }
 }

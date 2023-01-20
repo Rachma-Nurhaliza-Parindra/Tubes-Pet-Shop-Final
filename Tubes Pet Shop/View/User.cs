@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -128,6 +129,51 @@ namespace Tubes_Pet_Shop.View
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        private void ExportExcel(DataGridView dataGrid, string searchData)
+        {
+            string Output = "";
+            string Headers = "";
+
+            //Export Title 
+            for (int j = 0; j < dataGrid.ColumnCount; j++)
+            {
+                Headers = Headers.ToString() + Convert.ToString(dataGrid.Columns[j].HeaderText) + "\t";
+            }
+            Output += Headers + ",\r\n";
+
+            //Export Data
+            for (int i = 0; i < dataGrid.RowCount; i++)
+            {
+                string Line = "";
+                for (int j = 0; j < dataGrid.Rows[i].Cells.Count; j++)
+                {
+                    Line = Line.ToString() + Convert.ToString(dataGrid.Rows[i].Cells[j].Value) + "\t";
+                }
+                Output += Line + "\r\n";
+            }
+            Encoding encoding = Encoding.GetEncoding(1254);
+            //array dengan tipe byte
+            byte[] ouputs = encoding.GetBytes(Output);
+            FileStream file = new FileStream(searchData, FileMode.Create);
+            BinaryWriter binary = new BinaryWriter(file);
+
+            binary.Write(ouputs, 0, Output.Length);
+            binary.Flush();
+            binary.Close();
+            file.Close();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Excel Document (*.xls)|*.xls";
+            save.FileName = "Report User.xls";
+
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                ExportExcel(DataUser, save.FileName);
+            }
         }
     }
 }

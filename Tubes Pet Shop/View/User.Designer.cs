@@ -45,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.GB1 = new System.Windows.Forms.GroupBox();
             this.DataUser = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
             this.GBTombol.SuspendLayout();
             this.GB2.SuspendLayout();
             this.GB1.SuspendLayout();
@@ -118,6 +119,7 @@
             // 
             // GB2
             // 
+            this.GB2.Controls.Add(this.btnExport);
             this.GB2.Controls.Add(this.tbPhone);
             this.GB2.Controls.Add(this.cbRole);
             this.GB2.Controls.Add(this.tbAddress);
@@ -224,6 +226,17 @@
             this.DataUser.TabIndex = 0;
             this.DataUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataUser_CellClick);
             // 
+            // btnExport
+            // 
+            this.btnExport.ForeColor = System.Drawing.Color.Black;
+            this.btnExport.Location = new System.Drawing.Point(406, 117);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(103, 23);
+            this.btnExport.TabIndex = 9;
+            this.btnExport.Text = "Export to Excel";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,5 +277,6 @@
         private System.Windows.Forms.DataGridView DataUser;
         private System.Windows.Forms.TextBox tbPhone;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnExport;
     }
 }
